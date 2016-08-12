@@ -5,7 +5,7 @@ class Database{
     private $host = "localhost";
     private $db_name = "RBPortalDB";
     private $username = "root";
-    private $password = "P@55word";
+    private $password = "R@d1xB@y";
     public $conn;
 
     // get the database connection

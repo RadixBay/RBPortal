@@ -1,4 +1,5 @@
-class Assets{
+<?php
+class Asset{
 
     // database connection and table name
     private $conn;
@@ -6,7 +7,7 @@ class Assets{
 
     // object properties
     public $id;
-    public $id_asset_type
+    public $asset_type_id;
     public $name;
     public $description;
 
@@ -14,8 +15,8 @@ class Assets{
         $this->conn = $db;
     }
 
-    // used get all records
-    function readAll(){
+    // used by select drop-down list
+    function read(){
         //select all data
         $query = "SELECT
                     id_asset, id_asset_type, name, description
@@ -30,22 +31,21 @@ class Assets{
         return $stmt;
     }
 
-    // used to read name by its ID
+    // used to read an asset record by its ID
     function readOne(){
 
-        $query = "SELECT name, description, id_asset_type FROM " . $this->table_name . " WHERE id_asset = ? limit 0,1";
+
+        $query = "SELECT name, description FROM " . $this->table_name . " WHERE id_asset = :AssetID limit 0,1";
 
         $stmt = $this->conn->prepare( $query );
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(':AssetID', $this->id, PDO::PARAM_INT);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $this->name = $row['name'];
         $this->description = $row['description'];
-        $this->id_asset_type = $row['id_asset_type'];
     }
-
 }
 ?>
 

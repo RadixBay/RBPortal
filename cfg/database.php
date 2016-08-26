@@ -4,6 +4,8 @@ class Database{
     // specify your database credentials in cfg/db.ini
 
     public $conn;
+    private $username;
+    private $password;
 
     public function __construct($DBName)
     {

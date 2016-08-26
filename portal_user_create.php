@@ -17,7 +17,7 @@ $database = new Database('RBPortalDB');
 $db = $database->getConnection();
  
 
-// if the form was submitted - PHP OOP CRUD Tutorial
+// if the form was submitted
 if($_POST){
  
     // instantiate object
